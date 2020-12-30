@@ -24,8 +24,22 @@ struct Mission: Codable, Identifiable {
     let crew: [CrewRole]
     let description: String
     
+    var formattedCrewDisplay:String {
+        var output:String = ""
+        for i in 0..<crew.count {
+            
+            if i == crew.count - 1{
+                output = output + " and \(crew[i].name.capitalized)"
+                break;
+            }
+            
+            output = output + "\(crew[i].name.capitalized), "
+        }
+        return output
+    }
+    
+    
     var formattedLaunchDate:String {
-        
         if let date = launchDate {
                 let formatter = DateFormatter()
                 formatter.dateStyle = .long
