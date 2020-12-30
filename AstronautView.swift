@@ -36,7 +36,7 @@ struct AstronautView: View {
                         .font(.headline)
                 }
             }
-        }
+        }.navigationBarTitle(Text(astronaut.name), displayMode: .inline)
     }
 }
 
