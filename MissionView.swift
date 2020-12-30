@@ -8,13 +8,46 @@
 import SwiftUI
 
 struct MissionView: View {
+    
+    struct CrewMember {
+        let role: String
+        let astronaut: Astronaut
+    }
+    
+    let astronauts: [CrewMember]
+
+    
+    let mission:Mission
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            ScrollView(.vertical){
+                VStack{
+                    Image(self.mission.image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: geo.size.width * 0.7)
+                        .padding(.top)
+                    
+                    Text(self.mission.description)
+                        .padding()
+                    
+                    Spacer(minLength: 25)
+                }
+            }
+        }
+        .navigationBarTitle(Text(self.mission.displayName), displayMode: .inline)
     }
 }
 
+
+
 struct MissionView_Previews: PreviewProvider {
+    
+    static let missions: [Mission] = Bundle.main.decode("missions.json")
+
+    
     static var previews: some View {
-        MissionView()
+        MissionView(mission: missions[0])
     }
 }
