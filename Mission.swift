@@ -16,9 +16,6 @@ struct Mission: Codable, Identifiable {
         let role:String
     }
     
-    
-    
-    
     let id: Int
     let launchDate: Date?
     let crew: [CrewRole]
@@ -32,7 +29,6 @@ struct Mission: Codable, Identifiable {
                 output = output + " and \(crew[i].name.capitalized)"
                 break;
             }
-            
             output = output + "\(crew[i].name.capitalized), "
         }
         return output
@@ -47,7 +43,6 @@ struct Mission: Codable, Identifiable {
             } else {
                 return "Did not launch."
         }
-        
     }
     
     var displayName:String {
@@ -57,5 +52,4 @@ struct Mission: Codable, Identifiable {
     var image:String{
         return "apollo\(id)"
     }
-    
 }
